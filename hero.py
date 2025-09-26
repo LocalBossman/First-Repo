@@ -1,10 +1,17 @@
+from character import Character 
 #Character ---> Hero
 #        |______Enemy
 
+#class Character:
+#    def __init__(self):
+#        self.total.health = 100.0
+#        pass
 
-class Hero ():
 
+class Hero (Character):
     def __init__(self):
+        super().__init__()
+        print("This is the Hero Class")
 
         self.max_health = 100
         self.health_potion_strength = 5
@@ -36,7 +43,7 @@ class Hero ():
 
     def take_damage(self, damage):
         self.stats["health"] = self.stats["health"] - damage
-        print (f"your Health is now {self.stats["health"]}")
+        print (f"your Health is now {self.stats['health']}")
 
     def heal(self, item_name):
 
@@ -51,7 +58,7 @@ class Hero ():
             print("You've reached max health")
             self.stats["health"] = self.max_health
 
-        print (f"Your Health is now {self.stats["health"]}")
+        print (f"Your Health is now {self.stats['health']}")
         self.inventory.remove("health potion")
         print(f"Your inventroy is now {self.inventory}")
 
@@ -68,18 +75,27 @@ class Hero ():
             case _:
                 print(f"{item_name}is not in your inventory")
 
+def main():
+    print("This is where our program/game starts")
+    hero = Hero()
+    hero.print_stats()
+    print("\n-----------------\n")
+    hero.set_name("Local Bossman")
+    print("\n-----------------\n")
+    hero.stats["health"] = 70
+    print("\n-----------------\n")
+    hero.heal("health potion")
+    print("\n-----------------\n")
+    print(f"{hero.max_health}")
 
-hero = Hero()
-hero.stats
-hero.print_stats()
-print("\n-----------------\n")
-hero.set_name("Local Bossman")
-print("\n-----------------\n")
-hero.stats["health"] = 70
-print("\n-----------------\n")
-hero.heal("health potion")
-print("\n-----------------\n")
+
+
+if __name__ == '__main__':
+    main()
+
+#-----------------------------------------------------------------------------------------------------
+
 
 # print(f"Here are your Hero stats {player.stats}")
 
-hero.print_stats()
+#hero.print_stats()
